@@ -39,7 +39,7 @@ int __clock_nanosleep(clockid_t clk, int flags, const struct timespec *req, stru
 	return -r;
 #else
 	if (clk == CLOCK_REALTIME && !flags)
-		return -__sys_nanosleep_cp(SYS_nanosleep, req, rem);
+		return -__sys_nanosleep_cp(req, rem);
 	return -__syscall_cp(SYS_clock_nanosleep, clk, flags, req, rem);
 #endif
 }
